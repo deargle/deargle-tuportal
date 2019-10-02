@@ -111,7 +111,7 @@ $app->group('/api', function() use ($app) {
     
     $app->get('/getTip/password/:password/tipType/:tipType', function($password, $tipType) use ($app) {
         
-        $api_endpoint = 'http://passwords.leeds';
+        $api_endpoint = 'https://password-api.herokuapp.com';
         if (getenv('API-ENDPOINT')) {
             $api_endpoint = getenv('API-ENDPOINT');
         }
@@ -137,119 +137,38 @@ $app->group('/api', function() use ($app) {
     
 });
 
-$app->group('/cas', function() use ($app, $allowed_treatments) {
-    
-    $app->map('/', function() use ($app) {
-        
-        $app->render('cas/sign-in.html');
-        
-    })->via('GET','POST');
 
-    $app->map('/update(/:treatment)', function($treatment = null) use ($app, $allowed_treatments) {
-        
-        // if it is passed in, override the randomly-set treatment. For testing
-        if ($treatment && !in_array($treatment, $allowed_treatments)){
-            $app->halt(500,'Treatment not in allowed list: ' . join(', ', $allowed_treatments));
-        }
-            
-        if (!$treatment) {
-            $treatment = $app->config('study.treatment');
-        }
-        
-        $is_interactive_treatment = in_array($treatment, array('dynamicText', 'strengthMeter'));
-        
-        $data = array(
-            'link' => $app->config('links.after-cas'),
-            'treatment' => array( 
-                'type' => $treatment,
-                'is_interactive' => $is_interactive_treatment
-                ),
-        );
-        
-        $app->render('cas/update.html', $data);
-        
-    })->via('GET','POST');
     
-});
-
-$app->get('/', function() use ($app) {
-    $app->render('index.html', array(
-        'link' => $app->config('links.to-cas'),
-        'treatment' => $app->config('study.treatment')
-            ));
-});
-
-$app->map('/instructions', function() use ($app){
+$app->map('/', function() use ($app) {
     
-    $app->render('instructions.html', array());
+    $app->render('temple-signin-local.html');
     
 })->via('GET','POST');
 
-$app->map('/task(/count/:count/img1/:img1/img2/:img2/preferred/:preferred)', function($count = 0, $img1 = null, $img2 = null, $preferred = null) use ($app){
-
-    $count++;
-    $db_name = $app->config('db.name');
-    $db_username = $app->config('db.username');
-    $db_password = $app->config('db.password');
-
-    $mysqli = new mysqli('localhost', $db_username, $db_password, $db_name);
-
-    if (mysqli_connect_errno()) {
-            error_log("DB connection failed: %s\n", mysqli_connect_error());
-            echo 'Sorry, the study site is down! Please try again later.';
-            exit();
+$app->map('/update(/:treatment)', function($treatment = null) use ($app, $allowed_treatments) {
+    
+    // if it is passed in, override the randomly-set treatment. For testing
+    if ($treatment && !in_array($treatment, $allowed_treatments)){
+        $app->halt(500,'Treatment not in allowed list: ' . join(', ', $allowed_treatments));
     }
-
-    /*
-    // Process any existing values, if they have been sent
-    if (isset($_GET['preferred'])) {
-            $count     = (int) $_GET['count'] + 1;
-            $netId     = $_COOKIE['byu_behaviorallab_study']['netid'];// $_GET['ni'];
-            $img1      = (int) $_GET['img1'];
-            $img2      = (int) $_GET['img2'];
-            $preferred = (int) $_GET['preferred'];
-
-            // Attempt to insert the data into the database
-            $query = "INSERT INTO comparison_data (netId, image1, image2, preferred) VALUES (?, ?, ?, ?)";
-
-            if ($stmt = $mysqli->prepare($query)) {
-                    $stmt->bind_param('ssss', $netId, $img1, $img2, $preferred);
-                    $stmt->execute();
-                    $stmt->close();
-            } else {
-                    error_log(printf("Prepared statement error: %s\n", $mysqli->error));
-            }
+        
+    if (!$treatment) {
+        $treatment = $app->config('study.treatment');
     }
-        * 
-        */
-
-    // Get new images from the DB to present to the user
-    $imageQuery = "SELECT * FROM comparison_images ORDER BY rand() LIMIT 2";
-    $imageResults = null;
-
-    // Because we are pulling random records, there is the odd chance that we may pull two of the same. Prevent.
-    do {
-            if ($result = $mysqli->query($imageQuery)) {
-                while ($row = $result->fetch_assoc()) {
-                    $imageResults[] = $row;
-                } 
-
-                //free result set
-                $result->close();
-            }
-    } while ($imageResults[0]['id'] == $imageResults[1]['id']);
-
-    // Construct the query string
+    
+    $is_interactive_treatment = in_array($treatment, array('dynamicText', 'strengthMeter'));
+    
     $data = array(
-        'count' => $count, 
-        'img1' => $imageResults[0],
-        'img2' => $imageResults[1]
-        );
+        'link' => '/update',
+        'treatment' => array( 
+            'type' => $treatment,
+            'is_interactive' => $is_interactive_treatment
+            ),
+    );
     
-    $app->render('task.twig',$data);
+    $app->render('temple-update.html', $data);
     
-})->via('GET','POST')->name('task');
-
+})->via('GET','POST');
 
 $app->run();
 

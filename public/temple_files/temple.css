@@ -1,0 +1,147 @@
+/* Full-width, no gutter */
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* */
+
+/* Center column */
+.col-center {
+  margin: 0 auto;
+  float: none;
+}
+
+body {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0.4) 55%, rgba(0, 0, 0, 0.4) 85%, rgba(0, 0, 0, .4) 100%), url(/idp/images/portalPhoto.jpg) center center/cover;
+}
+
+.wrapper {
+  background: transparent;
+}
+
+header {
+  background-color: #FFFFFF;
+  border-bottom: 3px solid #000000;
+  padding: 10px;
+}
+
+header img {
+  margin-bottom: 0;
+}
+
+.content {
+  padding-top: 40px;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: #67B4F7;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+form {
+  padding: 10px;
+  width: auto;
+}
+
+#login-container, #logout-container, #error-container {
+  background-color: #FFFFFF;
+  border: 1px solid #232323;
+  box-shadow: 0px 1px 5px 1px rgba(25,25,25,0.75);
+  -webkit-box-shadow: 0px 1px 5px 1px rgba(25,25,25,0.75);
+  -moz-box-shadow: 0px 1px 5px 1px rgba(25,25,25,0.75);
+  width: 375px;
+}
+
+#logout-container, #error-container {
+  padding-top: 10px;
+}
+
+#logout-container .content-row, #error-container .content-row {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.content-title {
+  margin-top: 0;
+}
+
+#tu-logo {
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+
+.form-error {
+  background-color: #EE2738;
+  border: 1px solid #A72A00;
+  color: #F6F6F6;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+#username, #password {
+  width: 75%
+}
+
+.btn-login {
+  background-image: linear-gradient(to bottom, #C92243 0, #9D1A36 100%);
+  background-image: webkit-linear-gradient(top, #C92243 0, #9D1A36 100%);
+  background-image: o-linear-gradient(top, #C92243 0, #9D1A36 100%);
+  background-image: webkit-gradient(linear, left top, left bottom, from(#C92243), to(#9D1A36));
+  border-color: #89172E;
+  color: #F6F6F6;
+  text-transform: uppercase;
+}
+
+.btn-login:hover, .btn-login:active:hover, .btn-login:focus, .btn-login:active:focus {
+  background-color: #9D1A36;
+  background-image: linear-gradient(to bottom, #BF2040 0, #9D1A36 100%);
+  background-image: webkit-linear-gradient(top, #BF2040 0, #9D1A36 100%);
+  background-image: o-linear-gradient(top, #BF2040 0, #9D1A36 100%);
+  background-image: webkit-gradient(linear, left top, left bottom, from(#BF2040), to(#9D1A36));
+  border-color: #89172E;
+  color: #F6F6F6;
+}
+
+form .form-group:last-child {
+  margin-bottom: 0;
+}
+
+#login-footer-left, #login-footer-right { 
+  color: #898989; 
+  font-size: .75em;
+  padding: 7px 7px 0 7px;
+}
+
+#login-footer-left {
+  background-color: #444444;
+}
+
+#login-footer-right {
+  background-color: #222222;
+}
+
+#login-footer-left a:link, #login-footer-left a:visited, #login-footer-left a:hover, #login-footer-left a:active {
+  color: #F6F6F6;
+}
+
+#login-footer-left a:hover {
+  text-decoration: underline;
+}
+
+#login-footer-right img {
+  margin-bottom: 12px;
+  margin-top: 6px;
+}

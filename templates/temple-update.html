@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- saved from url=(0103)https://fim.temple.edu/idp/profile/cas/login;jsessionid=BE151C4B91A09576EC20380CEBBE3EED?execution=e1s1 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://www.temple.edu/sites/all/themes/edu/favicon.ico">
+    <title>Temple University</title>
+	
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/temple_files/bootstrap.min.css">    
+    <link rel="stylesheet" href="/temple_files/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/temple_files/main.css">
+    <link rel="stylesheet" href="/temple_files/temple.css">
+
+        <!-- Password analysis -->
+    <link href="/hack_the_password/phramewrk/styles/forms.css" rel="stylesheet" type="text/css">
+    <link href="/hack_the_password/styles/site.css" rel="stylesheet" type="text/css">
+    
+    <script src="/hack_the_password/phramewrk/scripts/jQuery.js" type="text/javascript" language="javascript"></script>
+    <script src="/hack_the_password/phramewrk/scripts/Class.js" type="text/javascript" language="javascript"></script>
+    <script src="/hack_the_password/phramewrk/scripts/Form.js" type="text/javascript" language="javascript"></script>
+    <script src="/hack_the_password/phramewrk/scripts/Phramewrk.js" type="text/javascript" language="javascript"></script>
+    <script type="text/javascript" language="javascript">
+        treatment = {
+            "type" : "{{ treatment.type }}",
+            "is_interactive" : "{{ treatment.is_interactive }}"
+        };
+    </script>
+    <script src="/hack_the_password/scripts/PasswordSecurityStudy-socwall.js" type="text/javascript" language="javascript"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/idp/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/idp/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- My Overrides -->
+    <link 
+        rel="stylesheet" 
+        media="all"
+        type="text/css"
+        href="/styles/mystyles.css"
+    >
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container-fluid">
+        <div class="content row no-gutter">
+          <div id="login-container" class="col-xs-6 col-xs-offset-3 col-center">        
+            <div class="row">
+              <form id='updatePasswordForm' action="{{ link }}" method="post" class='form'>
+                <div class='formWrapperContainer'>
+                <div class='formPageWrapper'>
+                <div id='updatePassword-page1' class='formPage'>
+                <div id='updatePassword-page1-section1' class='formSection'>
+                <div class="form-group">
+                  <img id="tu-logo" class="img-responsive" src="/temple_files/templelogo.png" alt="Temple University">
+		</div>
+                <div class="form-group">
+                  
+                </div> 
+                <div class="form-group">
+                  <h4>Please update your password:</h4>
+                </div>
+                <div class="form-group">
+                  <div id="updatePassword-wrapper" class="">
+                    <label 
+                        id="updatePassword-label" 
+                        class="formComponentLabel" 
+                        for="updatePassword"
+                    >New Password</label>
+                    
+                    <input 
+                        id="updatePassword" 
+                        name="updatePassword" 
+                        class="form-control"
+                        tabindex="2" 
+                        accesskey="p" 
+                        type="password" 
+                        value="" 
+                    {% if treatment.is_interactive %}
+                        onkeyup="passwordSecurityStudy.getTip(this, $(this).val(), '{{ treatment.type }}' );"
+                    {% endif %}
+                    >
+                    
+                    {% if not (treatment.type == 'control') %}
+                    <div 
+                        id="updatePassword-tip" 
+                        style="display: none;" 
+                        class="formComponentTip">
+                        <div id="pssResults">
+                            <p>Please enter a password.</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="password">Confirm New Password</label>
+                  <input class="form-control" id="updateConfirmPassword" name="j_password" type="password" value="">
+                </div>
+                <div class="form-group clearfix">
+                  <button class="btn btn-default btn-login" name="_eventId_proceed">
+                    Login                  </button>
+                </div>
+                <div class="form-group">
+                  <p><a href="https://accounts.temple.edu/cgi-bin/accounts.cgi?action=cant_login" target="_blank">Login Help</a></p>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+              </form>
+            </div>
+            <div class="row">
+              <div id="login-footer-left" class="col-xs-12">
+                <p><a href="https://its.temple.edu/system-status" target="_blank">System Status</a> | <a href="https://tuhelp.temple.edu/" target="_blank">TUhelp</a></p>
+                <p>Maintained by <a href="https://its.temple.edu/" target="_blank">Information Technology Services</a> <br>
+                © 2019 Temple University <a href="https://its.temple.edu/tech-policies" target="_blank">Policies and Guidelines</a> | <a href="http://www.temple.edu/privacy/" target="_blank">Privacy Statement</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+			
+                                                                                                                        
+      </div>
+                                                
+                                      
+    <!-- jQuery (necessary for Bootstrap JavaScript plugins)-->
+    <!-- <script src="/temple_files/jquery-2.1.4.min.js.download"></script> -->
+    <!-- Include all compiled plugins (below) or include individual files as needed -->
+    <!-- <script src="/temple_files/bootstrap.min.js.download"></script> -->
+    <!-- <script src="/temple_files/temple.js.download"></script> -->
+
+  
+
+</div>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {                    
+        passwordAnalyzerObject = new Form('passwordAnalyzer', 
+            {"options":{
+                    "submitButtonText":"Submit",
+                },
+                "formPages":{
+                    "updatePassword-page1":{
+                        "formSections":{
+                            "updatePassword-page1-section1":{
+                                "formComponents":{
+                                    "updatePassword":{
+                                        "options": {
+                                            "validationOptions":["required"]
+                                        },
+                                        "type":"FormComponentSingleLineText"
+                                    },
+                                    "updateConfirmPassword":{
+                                        "options" :{
+                                            "validationOptions":{
+                                                "matches":"updatePassword",
+                                                "0":"required"
+                                            }
+                                        },
+                                        "type":"FormComponentSingleLineText"
+                                    },
+                                    "updatePassword-view":{
+                                        "type":"FormComponentHidden"
+                                    },
+                                    "updatePassword-viewData":{
+                                        "type":"FormComponentHidden"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ); 
+    });
+</script>
+</body></html>

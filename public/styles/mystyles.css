@@ -12,16 +12,20 @@ input {
     padding-left: .5em;
 }
 
+#updatePassword, #updateConfirmPassword {
+    width: 75%;
+}
+
 #updatePassword-tip {
     font-size: 1.2em;
 }
 
-#updatePassword-tip > div > div.text {
+#updatePassword-tip .text {
     width: 400px;
 }
 
 #updatePassword-tip {
-/*    width: 400px;*/
+    min-width: 400px;
 }
 
 #inputarea {
@@ -31,4 +35,7 @@ input {
 body {
     padding-top: 0em;
     padding-bottom: 0em;
+}
+.content {
+    min-height: 800px;
 }

@@ -1,0 +1,17 @@
+$(document).ready(function () {
+  adaptiveImg()
+});
+
+$(window).on('resize', function () {
+  adaptiveImg();
+});
+
+function adaptiveImg() {
+  width = $(window).width();
+  
+if (width <= 992) {
+    $('#tu-logo').attr('src', '/idp/images/templelogo-mobile.png');
+  } else {
+    $('#tu-logo').attr('src', '/idp/images/templelogo.png');
+  }
+}
